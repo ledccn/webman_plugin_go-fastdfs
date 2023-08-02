@@ -41,6 +41,7 @@ class Auth
             throw new InvalidArgumentException('未配置google2fa');
         }
         //纯数字：谷歌验证器
+        /** @var GoogleAuthenticator $google */
         $google = Container::get(GoogleAuthenticator::class);
         return $google->verifyCode($secret, $code, 2);
     }
