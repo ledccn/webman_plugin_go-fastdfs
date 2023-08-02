@@ -4,6 +4,7 @@ namespace Ledc\GoFastdfs;
 
 use InvalidArgumentException;
 use Ledc\GoFastdfs\Library\GoogleAuthenticator;
+use support\Container;
 use Webman\Http\Request;
 
 /**
@@ -40,7 +41,7 @@ class Auth
             throw new InvalidArgumentException('未配置google2fa');
         }
         //纯数字：谷歌验证器
-        $google = new GoogleAuthenticator();
+        $google = Container::get(GoogleAuthenticator::class);
         return $google->verifyCode($secret, $code, 2);
     }
 }
