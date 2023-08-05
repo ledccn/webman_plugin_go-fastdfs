@@ -21,7 +21,7 @@ class Auth
      */
     public static function canAccess(Request $request): bool
     {
-        $auto_token = $request->input('auth_token');
+        $auto_token = $request->input('auth_token', $request->header('auth_token'));
         if (ctype_digit((string)$auto_token)) {
             return self::google($auto_token);
         }
